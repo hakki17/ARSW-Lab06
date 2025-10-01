@@ -21,6 +21,7 @@
     <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>webjars-locator</artifactId>
+        <version>0.52</version>
     </dependency>
 
     <dependency>
@@ -50,14 +51,14 @@
 5. En el elemento \<head\> de la página, agregue las referencia a las librerías de jQuery, Bootstrap y a la hoja de estilos de Bootstrap. 
     ```html
     <head>
-        <title>Blueprints</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blueprints</title>
 
-        <script src="/webjars/jquery/jquery.min.js"></script>
+        <!-- jQuery y Bootstrap -->
+        <script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
         <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet"
-          href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
     </head>
     ```
 

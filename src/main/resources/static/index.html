@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueprints</title>
+
+    <!-- jQuery y Bootstrap -->
+    <script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Blueprints Management</h1>
+        <hr>
+
+        <div class="form-group">
+            <label for="authorInput">Author Name:</label>
+            <input type="text" id="authorInput" class="form-control" placeholder="Enter author name">
+        </div>
+
+        <button id="getBlueprintsBtn" class="btn btn-primary">Get blueprints</button>
+
+        <hr>
+
+        <div id="authorNameDisplay">
+            <h3>Author: <span id="authorName"></span></h3>
+        </div>
+
+        <table class="table table-bordered" id="blueprintsTable">
+            <thead>
+                <tr>
+                    <th>Blueprint Name</th>
+                    <th>Number of Points</th>
+                    <th>Open</th>
+                </tr>
+            </thead>
+            <tbody id="blueprintsTableBody">
+            </tbody>
+        </table>
+
+        <div>
+            <h4>Total points: <span id="totalPoints">0</span></h4>
+        </div>
+
+        <hr>
+
+        <div id="canvasContainer">
+            <h4>Blueprint: <span id="currentBlueprintName"></span></h4>
+            <canvas id="blueprintCanvas" width="800" height="600" style="border: 1px solid #ccc;"></canvas>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/apimock.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
