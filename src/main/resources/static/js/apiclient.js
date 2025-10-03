@@ -1,37 +1,48 @@
+// punto 12
 var apiclient = (function() {
-    var baseUrl = "http://localhost:8080/blueprints";
+
+
+    var baseUrl = 'http://localhost:8080/blueprints';
+
+
+    var getBlueprintsByAuthor = function(author, callback) {
+
+        $.ajax({
+            url: baseUrl + '/' + author,
+            method: 'GET',
+            success: function(data) {
+                console.log('Blueprints obtenidos:', data);
+                callback(data);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al obtener blueprints:', error);
+                console.error('Status:', xhr.status);
+                console.error('Response:', xhr.responseText);
+                callback(null);
+            }
+        });
+    };
+
+    var getBlueprintsByNameAndAuthor = function(author, bpname, callback) {
+        $.ajax({
+            url: baseUrl + '/' + author + '/' + bpname,
+            method: 'GET',
+            success: function(data) {
+                console.log('Blueprint obtenido:', data);
+                callback(data);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al obtener blueprint:', error);
+                console.error('Status:', xhr.status);
+                console.error('Response:', xhr.responseText);
+                callback(null);
+            }
+        });
+    };
 
     return {
-        getBlueprintsByAuthor: function(author, callback) {
-            $.ajax({
-                url: baseUrl + "/" + author,
-                method: 'GET',
-                success: function(data) {
-                    callback(null, data);
-                },
-                error: function(xhr, status, error) {
-                    callback({
-                        message: "Error fetching blueprints: " + error,
-                        status: xhr.status
-                    }, null);
-                }
-            });
-        },
-
-        getBlueprintsByNameAndAuthor: function(author, blueprintName, callback) {
-            $.ajax({
-                url: baseUrl + "/" + author + "/" + blueprintName,
-                method: 'GET',
-                success: function(data) {
-                    callback(null, data);
-                },
-                error: function(xhr, status, error) {
-                    callback({
-                        message: "Error fetching blueprint: " + error,
-                        status: xhr.status
-                    }, null);
-                }
-            });
-        }
+        getBlueprintsByAuthor: getBlueprintsByAuthor,
+        getBlueprintsByNameAndAuthor: getBlueprintsByNameAndAuthor
     };
+
 })();

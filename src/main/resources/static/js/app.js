@@ -1,5 +1,9 @@
 var app = (function () {
 
+    // punto 13
+    // var api = apimock;
+    var api = apiclient;
+
     // punto 4
     var currentAuthor = null;
 
@@ -21,7 +25,7 @@ var app = (function () {
     var updateBlueprintsByAuthor = function (author) {
         setAuthor(author);
 
-        apimock.getBlueprintsByAuthor(author, function (data) {
+        api.getBlueprintsByAuthor(author, function (data) {
             if (!data) {
                 alert('Author not found');
                 return;
@@ -45,6 +49,7 @@ var app = (function () {
                 row.append($('<td>').text(blueprint.name));
                 row.append($('<td>').text(blueprint.points));
 
+                // punto 10
                 var openButton = $('<button>')
                     .addClass('btn btn-sm btn-default')
                     .text('Open')
@@ -70,7 +75,7 @@ var app = (function () {
 
     // punto 9
     var canvasBlueprint = function (author, blueprintName) {
-        apimock.getBlueprintsByNameAndAuthor(author, blueprintName, function (data) {
+        api.getBlueprintsByNameAndAuthor(author, blueprintName, function (data) {
             if (!data || !data.points || data.points.length === 0) {
                 alert('Blueprint not found or has no points');
                 return;
