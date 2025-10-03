@@ -1,17 +1,17 @@
 package edu.eci.arsw.blueprints.persistence.impl;
 
-import edu.eci.arsw.blueprints.model.Blueprint;
-import edu.eci.arsw.blueprints.model.Point;
-import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
-import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
-import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Service;
+
+import edu.eci.arsw.blueprints.model.Blueprint;
+import edu.eci.arsw.blueprints.model.Point;
+import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
+import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
+import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
 
 /**
  *
@@ -40,6 +40,26 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
         Blueprint bp4 = new Blueprint("juan", "baño", pts4);
         blueprints.put(new Tuple<>(bp4.getAuthor(), bp4.getName()), bp4);
 
+        Point[] catFacePoints = new Point[]{
+            new Point(200, 140), new Point(175, 145), new Point(155, 160), new Point(145, 185),
+            new Point(145, 215), new Point(155, 240), new Point(175, 255), new Point(200, 260),
+            new Point(225, 255), new Point(245, 240), new Point(255, 215), new Point(255, 185),
+            new Point(245, 160), new Point(225, 145), new Point(200, 140), new Point(155, 160),
+            new Point(145, 130), new Point(160, 145), new Point(155, 160), new Point(245, 160),
+            new Point(255, 130), new Point(240, 145), new Point(245, 160), new Point(200, 200),
+            new Point(175, 190), new Point(170, 195), new Point(170, 200), new Point(175, 205),
+            new Point(180, 200), new Point(180, 195), new Point(175, 190), new Point(200, 200),
+            new Point(225, 190), new Point(220, 195), new Point(220, 200), new Point(225, 205),
+            new Point(230, 200), new Point(230, 195), new Point(225, 190), new Point(200, 220),
+            new Point(195, 228), new Point(205, 228), new Point(200, 220), new Point(200, 228),
+            new Point(185, 235), new Point(200, 242), new Point(215, 235), new Point(200, 228),
+            new Point(175, 225), new Point(140, 220), new Point(175, 225), new Point(140, 230),
+            new Point(175, 225), new Point(225, 225), new Point(260, 220), new Point(225, 225),
+            new Point(260, 230), new Point(225, 225)
+        };
+
+        Blueprint catFace = new Blueprint("mapunix", "catface", catFacePoints);
+        blueprints.put(new Tuple<>(catFace.getAuthor(), catFace.getName()), catFace);
     }
 
     @Override
