@@ -13,7 +13,6 @@ var app = (function () {
     // punto 4
     var setAuthor = function (authorName) {
         currentAuthor = authorName;
-        console.log("Author changed to: " + currentAuthor);
     };
 
     // punto 4
@@ -26,7 +25,7 @@ var app = (function () {
         setAuthor(author);
 
         api.getBlueprintsByAuthor(author, function (data) {
-            if (!data) {
+            if (!data || data.length === 0) {
                 alert('Author not found');
                 return;
             }
@@ -40,6 +39,7 @@ var app = (function () {
             });
 
             $('#authorName').text(author);
+            $('#authorInfo').addClass('show');
             $('#blueprintsTableBody').empty();
 
 
@@ -68,8 +68,8 @@ var app = (function () {
             }, 0);
 
             $('#totalPoints').text(totalPoints);
-
-            console.log("Blueprints loaded:", currentBlueprints);
+            $('#tableWrapper').show();
+            $('#emptyState').hide();
         });
     };
 
@@ -90,7 +90,7 @@ var app = (function () {
 
             $('#canvasContainer').show();
 
-            ctx.strokeStyle = '#000000';
+            ctx.strokeStyle = '#ffffffff';
             ctx.lineWidth = 2;
 
             ctx.beginPath();
@@ -100,7 +100,7 @@ var app = (function () {
             }
             ctx.stroke();
 
-            ctx.fillStyle = '#a5269fff';
+            ctx.fillStyle = '#2563EB';
 
             data.points.forEach(function (point) {
                 ctx.beginPath();
